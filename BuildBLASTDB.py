@@ -6,10 +6,11 @@ Author: Henry Ehlers
 WUR_Number: 921013218060
 
 A script designed to .build a blast database.
-    -inputs:    [1] input_fasta_path
-                [2] type of database
-                [3] name of the database
-                [4] path of output folder
+    -inputs:    [1] A string specifying the path to the input FASTA file.
+                [2] A string specifying the type of database to be used.
+                [3] A string specifying the name of the database.
+                [4] A string specifying the path of output folder in which the database will be
+                    saved.
 
 In order to provide readable and understandable code, the right indentation margin has been
 increased from 79 to 99 characters, which remains in line with Python-Style-Recommendation (
