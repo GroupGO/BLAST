@@ -21,14 +21,6 @@ import os
 import re
 
 
-def make_directory(path):
-    if not os.path.exists(path):
-        execute_on_command_line('mkdir %s' % path)
-        return 1
-    else:
-        return 0
-
-
 def get_contents(path_text_file):
     """
 
@@ -63,7 +55,8 @@ def run_blast(fasta_paths, genome_names, output_dir):
             print('\t\tDatabase: %s' % genome_name)
             os.chdir(genome)
             output = '%s_%s.txt' % (genome_name, fasta_name)
-            cmd = 'blastn -query %s -db %s > %s%s' % (fasta, genome_name, output_dir, output)
+            cmd = 'blastn -outfmt 6 -query %s -db %s > %s%s' \
+                  % (fasta, genome_name, output_dir, output)
             execute_on_command_line(cmd)
     os.chdir(current_path)
 
@@ -77,7 +70,6 @@ def main():
     fasta_paths, genome_names = get_contents(fasta_paths), get_contents(genome_names)
     for path in fasta_paths:
         assert os.path.exists(path), '%s does not exist.' % path
-    make_directory(output_directory)
     run_blast(fasta_paths, genome_names, output_directory)
 
 
